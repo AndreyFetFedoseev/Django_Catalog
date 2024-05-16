@@ -17,3 +17,18 @@ ipython = "^8.24.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ['py312']
+skip-string-normalization = true
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.pytest_cache
+  | \.venv
+  | data
+  | migrations
+)/
+'''
