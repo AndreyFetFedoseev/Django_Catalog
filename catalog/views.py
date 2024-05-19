@@ -18,12 +18,14 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-# def product(request):
-#     return render(request, 'main/product.html')
-
-
 def products_list(request):
     products = Product.objects.all()
     categories = Category.objects.all()
     content = {'cams': products, 'cctvs': categories}
     return render(request, 'main/cam_list.html', content)
+
+
+def product_cam(request, pk):
+    cam = Product.objects.get(pk=pk)
+    content = {'cam': cam}
+    return render(request, 'main/product_cam.html', content)
