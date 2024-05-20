@@ -1,13 +1,11 @@
 {% extends 'main/product.html' %}
+{% load tags %}
 {% block cam %}
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-
     <div class="col">
-
         <div class="card mb-4 rounded-3 shadow-sm">
-
+            <img src="{{ cam.image | media_filter }}">
             <div class="card-header py-3">
-
                 <h4 class="my-0 fw-normal">{{ cam.name }}</h4>
             </div>
             <div class="card-body">
@@ -15,14 +13,10 @@
                         class="text-body-secondary fw-light"> rub</small></h1>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li>{{ cam.description }}</li>
-                    <li></li>
                     <li>{{ cam.created_at }}</li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
             </div>
-
         </div>
-
     </div>
 </div>
 {% endblock %}

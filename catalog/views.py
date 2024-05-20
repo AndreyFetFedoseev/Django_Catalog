@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from catalog.models import Product, Category
 
 
@@ -26,6 +26,6 @@ def products_list(request):
 
 
 def product_cam(request, pk):
-    cam = Product.objects.get(pk=pk)
+    cam = get_object_or_404(Product, pk=pk)
     content = {'cam': cam}
     return render(request, 'main/product_cam.html', content)
