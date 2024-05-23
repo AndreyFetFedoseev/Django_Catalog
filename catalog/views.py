@@ -1,5 +1,7 @@
 import json
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
+
 from catalog.models import Product, Category
 
 
@@ -18,11 +20,20 @@ def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-def products_list(request):
-    products = Product.objects.all()
-    categories = Category.objects.all()
-    content = {'cams': products, 'cctvs': categories}
-    return render(request, 'main/cam_list.html', content)
+class ProductListView(ListView):
+    model = Product
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
+
+# def products_list(request):
+#     products = Product.objects.all()
+#     categories = Category.objects.all()
+#     content = {'cams': products, 'cctvs': categories}
+#     return render(request, 'main/cam_list.html', content)
 
 
 def product_cam(request, pk):

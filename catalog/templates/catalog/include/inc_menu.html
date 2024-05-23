@@ -8,7 +8,6 @@
         </svg>
         <span class="fs-4">Прайс-лист</span>
     </a>
-
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'catalog:home' %}">Главная</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'catalog:contacts' %}">Контакты</a>
@@ -16,10 +15,15 @@
         <a class="py-2 link-body-emphasis text-decoration-none" href="#">Регистрация</a>
     </nav>
 </div>
-
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    {% for cctv in cctvs %}
-    <h1 class="display-4 fw-normal text-body-emphasis">{{ cctv.name }}</h1>
-    <p class="fs-5 text-body-secondary">{{ cctv.description }}</p>
-    {% endfor %}
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Категории
+        </button>
+        <ul class="dropdown-menu">
+            {% for cctv in categories %}
+                <li><a class="dropdown-item" href="#">{{ cctv.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
