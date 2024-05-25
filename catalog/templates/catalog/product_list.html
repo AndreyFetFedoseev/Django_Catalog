@@ -1,4 +1,4 @@
-{% extends 'catalog/product.html' %}
+{% extends 'catalog/base_product.html' %}
 {% load tags %}
 {% block cam %}
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -17,7 +17,7 @@
                     <li></li>
                     <li>{{ cam.created_at }}</li>
                 </ul>
-                <a class="btn btn-primary" href="{% url 'catalog:cam_product' cam.pk %}" role="button">Описание</a>
+                <a class="btn btn-primary" href="{% url 'catalog:product_detail' cam.pk %}" role="button">Описание</a>
             </div>
         </div>
     </div>
