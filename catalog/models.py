@@ -55,3 +55,27 @@ class Product(models.Model):
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
         ordering = ["category", "price"]
+
+
+class Blog(models.Model):
+    """
+    Модель для блога
+    """
+
+    title = models.CharField(max_length=150, verbose_name="Заголовок")
+    slug = models.CharField(max_length=150, verbose_name="slug", **NULLABLE)
+    content = models.TextField(verbose_name="Содержимое", **NULLABLE)
+    preview = models.ImageField(
+        upload_to="blog/", verbose_name="Отправить изображение", **NULLABLE
+    )
+    created_at = models.DateField(verbose_name="Дата создания", auto_now_add=True)
+    publication = models.BooleanField(verbose_name="Опубликовано", default=True)
+    number_of_views = models.PositiveIntegerField(verbose_name="Количество просмотров", default=0)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Блог"
+        verbose_name_plural = "Блоги"
+        ordering = ["created_at"]
