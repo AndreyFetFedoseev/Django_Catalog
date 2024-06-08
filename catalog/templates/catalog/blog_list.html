@@ -39,11 +39,14 @@
                         <li>- Кол-во просмотров: {{ object.number_of_views }}</li>
                         <li>- {{ object.slug }}</li>
                     </ul>
-                    <a class="p-2 btn btn-outline-primary mb-2" href="{% url 'catalog:blog_detail' object.pk %}">Читать
+                    <a class="p-2 btn btn-outline-info mb-2" href="{% url 'catalog:blog_detail' object.pk %}">Читать
                         далее</a>
+                </div>
+                <div class="card-footer">
+
                     <a class="p-2 btn btn-outline-primary mb-2" href="{% url 'catalog:update_blog' object.pk %}">Отредактировать
                         статью</a>
-                    <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:delete_blog' object.pk %}">Удалить</a>
+                    <a class="p-2 btn btn-outline-danger" href="{% url 'catalog:delete_blog' object.pk %}">Удалить</a>
                 </div>
             </div>
         </div>

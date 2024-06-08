@@ -1,6 +1,11 @@
 {% extends 'catalog/base_product.html' %}
 {% load tags %}
 {% block cam %}
+<div class="d-flex flex-row-reverse">
+    <div class="p-2">
+        <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}" role="button">Добавить товар</a>
+    </div>
+</div>
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     {% for cam in object_list %}
     <div class="col">
@@ -14,8 +19,11 @@
                         class="text-body-secondary fw-light"> rub</small></h1>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li>{{ cam.description }}</li>
-                    <li></li>
+                    {% if cam.update_at %}
+                    <li>{{ cam.update_at }}</li>
+                    {% else %}
                     <li>{{ cam.created_at }}</li>
+                    {% endif %}
                 </ul>
                 <a class="btn btn-primary" href="{% url 'catalog:product_detail' cam.pk %}" role="button">Описание</a>
             </div>
