@@ -1,5 +1,6 @@
 import json
 
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 from pytils.translit import slugify
@@ -7,7 +8,7 @@ from pytils.translit import slugify
 from catalog.forms import ProductForm
 # from django.shortcuts import render, get_object_or_404
 
-from catalog.models import Product, Category, Blog
+from catalog.models import Product, Category, Blog, Version
 
 
 # Create your views here.
@@ -34,6 +35,8 @@ class ProductListView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
+        # context['versions'] = Version.objects.all()
+        # context['versions'] = get_object_or_404(Version, pk=self.kwargs.get('pk'))
         return context
 
 

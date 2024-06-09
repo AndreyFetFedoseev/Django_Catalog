@@ -39,7 +39,7 @@
                         <li>- Кол-во просмотров: {{ object.number_of_views }}</li>
                         <li>- {{ object.slug }}</li>
                     </ul>
-                    <a class="p-2 btn btn-outline-info mb-2" href="{% url 'catalog:blog_detail' object.pk %}">Читать
+                    <a class="p-2 btn btn-link mb-2" href="{% url 'catalog:blog_detail' object.pk %}">Читать
                         далее</a>
                 </div>
                 <div class="card-footer">

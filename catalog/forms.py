@@ -24,7 +24,8 @@ class ProductForm(StyleFormMixin, ModelForm):
 
     def clean_description(self):
         word_danger = ('казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар')
-        cleaned_data = self.cleaned_data['description'].lower().replace(',', "").split()
-        if list(set(cleaned_data) & set(word_danger)):
-            raise forms.ValidationError('Запрещенные слова!')
+        cleaned_data = self.cleaned_data['description']
+        cleaned_data_sort = cleaned_data.lower().replace(',', "").split()
+        if list(set(cleaned_data_sort) & set(word_danger)):
+            raise forms.ValidationError('Использованы запрещенные слова!')
         return cleaned_data

@@ -13,6 +13,9 @@
             <img src="{{ cam.image | media_filter }}">
             <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">{{ cam.name }}</h4>
+                {% for version in cam.version_set.all %}
+                <p> Версия: {{ version.name_version }}</p>
+                {% endfor %}
             </div>
             <div class="card-body">
                 <h1 class="card-title pricing-card-title">{{ cam.price }}<small
@@ -25,6 +28,8 @@
                     <li>{{ cam.created_at }}</li>
                     {% endif %}
                 </ul>
+
+
                 <a class="btn btn-primary" href="{% url 'catalog:product_detail' cam.pk %}" role="button">Описание</a>
             </div>
         </div>
