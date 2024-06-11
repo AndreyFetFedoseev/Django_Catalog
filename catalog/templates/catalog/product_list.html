@@ -13,7 +13,7 @@
             <img src="{{ cam.image | media_filter }}">
             <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">{{ cam.name }}</h4>
-                {% for version in cam.versions.all %}
+                {% for version in cam.version_set.all %}
                     {% if version.current_version_indicator %}
                         <p> Версия: {{ version.name_version }}</p>
                     {% endif %}
