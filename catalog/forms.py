@@ -1,6 +1,6 @@
 from django.forms import ModelForm, forms
 
-from catalog.models import Product
+from catalog.models import Product, Version
 
 
 class StyleFormMixin:
@@ -8,6 +8,7 @@ class StyleFormMixin:
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+            # field.widget.attrs['class'] = 'form-control'
 
 
 class ProductForm(StyleFormMixin, ModelForm):
@@ -29,3 +30,9 @@ class ProductForm(StyleFormMixin, ModelForm):
         if list(set(cleaned_data_sort) & set(word_danger)):
             raise forms.ValidationError('Использованы запрещенные слова!')
         return cleaned_data
+
+
+class VersionForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Version
+        fields = '__all__'
