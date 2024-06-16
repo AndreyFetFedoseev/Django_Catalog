@@ -38,3 +38,15 @@ class VersionForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Version
         fields = '__all__'
+
+    # def clean_current_version_indicator(self):
+    #     # data = 0
+    #     cleaned_data = self.cleaned_data
+    #
+    #     # if cleaned_data:
+    #     #     cleaned_data += cleaned_data
+    #     print(cleaned_data)
+    #     # if cleaned_data['current_version_indicator']:
+    #     #     if cleaned_data['current_version_indicator']:
+    #             # raise forms.ValidationError('Название запрещено. Введите другое название!')
+    #     # return cleaned_data
