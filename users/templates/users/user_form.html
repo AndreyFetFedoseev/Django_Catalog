@@ -3,17 +3,17 @@
 {% block cam %}
 <div class="row text-center">
     <form class="row" method="post" enctype="multipart/form-data">
-        <div class="col-6">
+        <div class="col-8">
             <div class="card mb-6 box-shadow">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Авторизация пользователя</h4>
+                    <h4 class="my-0 font-weight-normal">Регистрация пользователя</h4>
                 </div>
                 <div class="card-body">
                     <div class="row-3">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button type="submit" class="btn btn-primary">
-                            Войти
+                            Зарегистрироваться
                         </button>
                     </div>
                 </div>
