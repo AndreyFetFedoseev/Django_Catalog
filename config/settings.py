@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'catalog',
     'users',
 ]
@@ -83,7 +82,7 @@ DATABASES = {
         'USER': 'Fet',
         'PASSWORD': 'postgresql_shop',
         'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'PORT': '5432',
     }
 }
 
@@ -127,7 +126,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     # Здесь вы можете добавить пути к вашим статическим файлам,
     # если они располагаются вне приложений
-    BASE_DIR / 'static'
+    BASE_DIR
+    / 'static'
 ]
 
 # Default primary key field type
@@ -147,7 +147,6 @@ LOGOUT_REDIRECT_URL = '/'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'andreyfetfedoseev@yandex.ru'
-# EMAIL_HOST_PASSWORD = 'vrmmgsdxvcixqvtc'
 EMAIL_HOST_PASSWORD = 'yapzeumkbbnygrfo'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True

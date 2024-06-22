@@ -11,7 +11,7 @@ class Command(BaseCommand):
             last_name='Fet',
             is_superuser=True,
             is_staff=True,
-            is_active=True
+            is_active=True,
         )
         user.set_password('feR7It54u')
         user.save()

@@ -2,20 +2,13 @@ import json
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 from pytils.translit import slugify
 
 from catalog.forms import ProductForm, VersionForm
-# from django.shortcuts import render, get_object_or_404
 
 from catalog.models import Product, Category, Blog, Version
-
-
-# Create your views here.
-# class HomePageView(TemplateView):
-#     template_name = 'catalog/index.html'
 
 
 class ContactsView(TemplateView):
@@ -159,34 +152,3 @@ class BlogDetailView(DetailView):
         self.object.number_of_views += 1
         self.object.save()
         return self.object
-
-
-# class VersionCreateView(CreateView):
-#     model = Version
-#     form_class = VersionForm
-#     success_url = reverse_lazy('catalog:products')
-
-
-# def homepage(request):
-#     return render(request, 'catalog/index.html')
-
-# def contacts(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         phone = request.POST.get('phone')
-#         message = request.POST.get('message')
-#         with open('data/contacts.json', 'a', encoding='utf-8') as file:
-#             json.dump({'name': name, 'phone': phone, 'message': message}, file)
-#     return render(request, 'catalog/contacts.html')
-
-# def products_list(request):
-#     products = Product.objects.all()
-#     categories = Category.objects.all()
-#     content = {'cams': products, 'cctvs': categories}
-#     return render(request, 'main/cam_list.html', content)
-
-
-# def product_cam(request, pk):
-#     cam = get_object_or_404(Product, pk=pk)
-#     content = {'cam': cam}
-#     return render(request, 'catalog/product_cam.html', content)
