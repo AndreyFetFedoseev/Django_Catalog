@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {"blank": True, "null": True}
 
 
@@ -48,6 +50,8 @@ class Product(models.Model):
     created_at = models.DateField(verbose_name="Дата создания", help_text="Введите дату", auto_now_add=True)
     update_at = models.DateField(verbose_name="Дата изменения", help_text="Введите дату", auto_now=True)
 
+    owner = models.ForeignKey(User, verbose_name="Владелец", on_delete=models.CASCADE, related_name="owner", **NULLABLE)
+
     def __str__(self):
         return self.name
 
@@ -65,9 +69,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=150, verbose_name="Заголовок")
     slug = models.CharField(max_length=150, verbose_name="slug", **NULLABLE)
     content = models.TextField(verbose_name="Содержимое", **NULLABLE)
-    preview = models.ImageField(
-        upload_to="blog/", verbose_name="Отправить изображение", **NULLABLE
-    )
+    preview = models.ImageField(upload_to="blog/", verbose_name="Отправить изображение", **NULLABLE)
     created_at = models.DateField(verbose_name="Дата создания", auto_now_add=True)
     publication = models.BooleanField(verbose_name="Опубликовано", default=True)
     number_of_views = models.PositiveIntegerField(verbose_name="Количество просмотров", default=0)
@@ -85,6 +87,7 @@ class Version(models.Model):
     """
     Модель для версий товаров
     """
+
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, verbose_name='Товар', **NULLABLE)
     number_version = models.PositiveIntegerField(verbose_name='Номер версии', default=1)
     name_version = models.CharField(max_length=255, verbose_name='Название версии')

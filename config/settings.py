@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -37,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'catalog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ DATABASES = {
         'USER': 'Fet',
         'PASSWORD': 'postgresql_shop',
         'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'PORT': '5432',
     }
 }
 
@@ -126,7 +127,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     # Здесь вы можете добавить пути к вашим статическим файлам,
     # если они располагаются вне приложений
-    BASE_DIR / 'static'
+    BASE_DIR
+    / 'static'
 ]
 
 # Default primary key field type
@@ -137,3 +139,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'andreyfetfedoseev@yandex.ru'
+EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD_SEND')
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

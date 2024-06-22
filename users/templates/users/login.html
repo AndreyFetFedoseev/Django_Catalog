@@ -1,0 +1,25 @@
+{% extends 'catalog/base_product.html' %}
+{% load tags %}
+{% block cam %}
+<div class="row text-center">
+    <form class="row" method="post" enctype="multipart/form-data">
+        <div class="col-6">
+            <div class="card mb-6 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Авторизация пользователя</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row-3">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="me-5 btn btn-primary">
+                            Войти
+                        </button>
+                        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'users:recovery_pass' %}">Забыли пароль?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

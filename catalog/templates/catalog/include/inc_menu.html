@@ -12,18 +12,11 @@
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'catalog:home' %}">Главная</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'catalog:contacts' %}">Контакты</a>
         <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'catalog:products' %}">Товары</a>
-        <a class="py-2 link-body-emphasis text-decoration-none" href="#">Регистрация</a>
+        {% if user.is_authenticated %}
+        <a class="py-2 link-body-emphasis text-decoration-none" href="{% url 'users:logout' %}">Выход</a>
+        {% else %}
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'users:login' %}">Вход</a>
+        <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="{% url 'users:register' %}">Регистрация</a>
+        {% endif %}
     </nav>
 </div>
-<!--<div class="pricing-header p-3 pb-md-4 mx-auto text-center">-->
-<!--    <div class="dropdown">-->
-<!--        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--            Категории-->
-<!--        </button>-->
-<!--        <ul class="dropdown-menu">-->
-<!--            {% for cctv in categories %}-->
-<!--                <li><a class="dropdown-item" href="#">{{ cctv.name }}</a></li>-->
-<!--            {% endfor %}-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</div>-->
