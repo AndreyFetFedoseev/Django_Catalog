@@ -1,8 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from catalog.models import NULLABLE
+# from catalog.models import NULLABLE
 
+
+NULLABLE = {"blank": True, "null": True}
 
 class User(AbstractUser):
     username = None
