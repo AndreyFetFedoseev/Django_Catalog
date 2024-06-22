@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -147,7 +148,7 @@ LOGOUT_REDIRECT_URL = '/'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'andreyfetfedoseev@yandex.ru'
-EMAIL_HOST_PASSWORD = 'yapzeumkbbnygrfo'
+EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD_SEND')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
