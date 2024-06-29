@@ -20,11 +20,13 @@
                     <li>{{ object.created_at }}</li>
                     {% endif %}
                 </ul>
-                {% if user.is_authenticated%}
-                <a class="btn btn-outline-secondary mb-3" href="{% url 'catalog:update_product' object.pk %}"
-                   role="button">Отредактировать товар</a>
-                <a class="btn btn-outline-danger mb-4" href="{% url 'catalog:delete_product' object.pk %}"
-                   role="button">Удалить товар</a>
+                {% if user == object.owner or perms.catalog.can_change_description_product and perms.catalog.can_change_category_product and perms.catalog.can_change_publication_product %}
+                    <a class="btn btn-outline-secondary mb-3" href="{% url 'catalog:update_product' object.pk %}"
+                        role="button">Отредактировать товар</a>
+                    {% if user == object.owner %}
+                        <a class="btn btn-outline-danger mb-4" href="{% url 'catalog:delete_product' object.pk %}"
+                            role="button">Удалить товар</a>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

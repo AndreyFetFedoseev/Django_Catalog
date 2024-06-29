@@ -51,6 +51,7 @@ class Product(models.Model):
     update_at = models.DateField(verbose_name="Дата изменения", help_text="Введите дату", auto_now=True)
 
     owner = models.ForeignKey(User, verbose_name="Владелец", on_delete=models.CASCADE, related_name="owner", **NULLABLE)
+    publication = models.BooleanField(verbose_name="Опубликовано", default=False)
 
     def __str__(self):
         return self.name
@@ -59,6 +60,11 @@ class Product(models.Model):
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
         ordering = ["category", "price"]
+        permissions = [
+            ('can_change_publication_product', 'Может отменять публикацию товара'),
+            ('can_change_description_product', 'Может менять описание товара'),
+            ('can_change_category_product', 'Может менять категорию товара'),
+        ]
 
 
 class Blog(models.Model):
