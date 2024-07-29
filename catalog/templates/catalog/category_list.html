@@ -1,0 +1,10 @@
+{% extends 'catalog/base_product.html' %}
+{% load tags %}
+{% block cam %}
+<p>Категории</p>
+{% for object in object_list %}
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action">{{ object.name }}</a>
+</div>
+{% endfor %}
+{% endblock %}
